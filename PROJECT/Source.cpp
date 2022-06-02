@@ -104,7 +104,31 @@ string d9 = " \
          ******** \n \
         ";
 
-void Show(int num1,int num2) {
+string plus_sign = " \
+             *      \n \
+             *      \n \
+             *      \n \
+       ************ \n \
+             *      \n \
+             *      \n \
+             *      \n \
+        ";
+
+
+string mult = " \
+        *       *\n \
+         *     * \n \
+          *   *  \n \
+           * *   \n \
+            *    \n \
+           * *   \n \
+          *  *   \n \
+         *    *  \n \
+        *      * \n \   ";
+
+
+
+void Show(int num1,int num2,int sign) {
     if (num1 == 1) {
         cout << d1 << endl;
     }
@@ -124,16 +148,8 @@ void Show(int num1,int num2) {
         cout << d0 << endl;
     }
 
-    string plus = " \
-             *      \n \
-             *      \n \
-             *      \n \
-       ************ \n \
-             *      \n \
-             *      \n \
-             *      \n \
-        ";
-    cout << plus << endl;
+    if(sign==1) cout << plus_sign << endl;
+    else if(sign==0) cout << mult << endl;
 
     if (num2 == 1) {
         cout << d1 << endl;
@@ -161,60 +177,72 @@ void Show(int num1,int num2) {
 #include<conio.h>
 
 void main() {
-    srand(time(0));
     while (true)
     {
-    system("cls");
+        srand(time(0));
+        system("cls");
 
-    system("color 7");
-    int num1 = 0; int num2 = 0;
+        system("color 7");
+        int num1 = 0; int num2 = 0;
 
-    num1 = rand() % (5-1);
-    num2 = rand() % (5-1);
-
-    Show(num1, num2);
-
-    int result = _getch();
-    result = result - 48;
-    if (result == 1) {
-        cout << d1 << endl;
-    }
-    else if (result == 2) {
-        cout << d2 << endl;
-    }
-    else if (result == 3) {
-        cout << d3 << endl;
-    }
-    else if (result == 4) {
-        cout << d4 << endl;
-    }
-    else if (result == 5) {
-        cout << d5 << endl;
-    }
-    else if (result == 6) {
-        cout << d6 << endl;
-    }
-    else if (result == 7) {
-        cout << d7 << endl;
-    }
-    else if (result == 8) {
-        cout << d8 << endl;
-    }
-    else if (result == 9) {
-        cout << d9 << endl;
-    }
-    else if (result == 0) {
-        cout << d0 << endl;
-    }
+        num1 = rand() % (5 - 1);
+        num2 = rand() % (5 - 1);
+        int sign = rand() % (2);
 
 
-    if (result == num1 + num2) {
-        system("color 2");
-    }
-    else {
-        system("color 4");
-    }
-   Sleep(2000);
+        Show(num1, num2, sign);
+
+        int result = _getch();
+        result = result - 48;
+        if (result == 1) {
+            cout << d1 << endl;
+        }
+        else if (result == 2) {
+            cout << d2 << endl;
+        }
+        else if (result == 3) {
+            cout << d3 << endl;
+        }
+        else if (result == 4) {
+            cout << d4 << endl;
+        }
+        else if (result == 5) {
+            cout << d5 << endl;
+        }
+        else if (result == 6) {
+            cout << d6 << endl;
+        }
+        else if (result == 7) {
+            cout << d7 << endl;
+        }
+        else if (result == 8) {
+            cout << d8 << endl;
+        }
+        else if (result == 9) {
+            cout << d9 << endl;
+        }
+        else if (result == 0) {
+            cout << d0 << endl;
+        }
+
+        if (sign == 1) {
+
+            if (result == num1 + num2) {
+                system("color 2");
+            }
+            else {
+                system("color 4");
+            }
+        }
+        else if (sign == 0) {
+            if (result == num1 * num2) {
+                system("color 2");
+            }
+            else {
+                system("color 4");
+            }
+        }
+        Sleep(2000);
 
     }
 }
